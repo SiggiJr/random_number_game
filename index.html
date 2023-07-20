@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script defer src="./assets/js/main.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="round_infos">
+      <p>in how many rounds yout think you can guess the number?</p>
+      <div class="radio_container">
+        <input type="radio" name="rounds" id="rounds_4" value="4" checked />
+        <label for="rounds_4">4</label>
+        <input type="radio" name="rounds" id="rounds_5" value="5" />
+        <label for="rounds_5">5</label>
+        <input type="radio" name="rounds" id="rounds_6" value="6" />
+        <label for="rounds_6">6</label>
+        <input type="radio" name="rounds" id="rounds_custom" value="custom" />
+        <label for="rounds_custom">custom</label>
+        <div class="custom_container">
+          <input type="number" name="custom_input" id="custom_input" class="hidden" min="1" />
+        </div>
+      </div>
+      <output class="rounds_output hidden"></output>
+    </section>
+    <section class="guessfield">
+      <form class="guess_form">
+        <input type="number" name="user_number" id="user_number" min="1" max="100" />
+        <button type="submit" class="guess_btn">guess</button>
+      </form>
+    </section>
+    <section class="output_section">
+      <output class="tip_output"></output>
+    </section>
+    <div class="reset">
+      <button class="reset_btn hidden">Reset</button>
+    </div>
+  </body>
+</html>

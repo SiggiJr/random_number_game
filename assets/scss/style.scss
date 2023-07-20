@@ -1,0 +1,9 @@
+@use "./resets";
+@use "./generals";
+@use "./mixins";
+@use "./variables";
+
+
+.hidden{
+  display: none;
+}
