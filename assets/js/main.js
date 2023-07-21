@@ -15,12 +15,16 @@ const tipsOutput = document.querySelector(".tip_output");
 let maxRounds = 0;
 let roundsCounter = 0;
 let CompChoice;
+let konamiArray = [];
+let lastKeyPress;
+let win = false;
+
 const gameFunction = (event) => {
-  const userNumber = Number(userGuess.value);
   event.preventDefault();
+  const userNumber = Number(userGuess.value);
   getRounds();
-  let gameOver = checkGameOver(userNumber);
-  if (gameOver) {
+  const playingConditions = checkPlayingConditions(userNumber);
+  if (playingConditions) {
     return;
   }
   roundsCounter++;
@@ -29,17 +33,32 @@ const gameFunction = (event) => {
     CompChoice = Math.floor(Math.random() * 99 + 1);
   }
   tipOutput(userNumber);
-  gameOver = checkGameOver(userNumber);
+  const gameOver = checkGameOver(userNumber);
+  win = checkWin(userNumber);
   if (gameOver) {
     resetBtn.classList.remove("hidden");
   }
 };
 
-const checkGameOver = (userNumber) => {
-  if (maxRounds === 0 || roundsCounter === maxRounds || !userNumber || userNumber === CompChoice || maxRounds < 1) {
+const checkWin = (userNumber) => {
+  if (userNumber === CompChoice) {
     return true;
   } else {
     return false;
+  }
+};
+
+const checkPlayingConditions = (userNumber) => {
+  if (maxRounds === 0 || roundsCounter === maxRounds || !userNumber || maxRounds < 1 || win) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const checkGameOver = (userNumber) => {
+  if (userNumber === CompChoice || roundsCounter === maxRounds) {
+    return true;
   }
 };
 
@@ -84,6 +103,7 @@ const reset = () => {
   radioBtnContainer.classList.remove("hidden");
   roundsOutput.classList.add("hidden");
   roundsCounter = 0;
+  win = false;
   tipsOutput.textContent = "";
   userGuess.value = "";
   resetBtn.classList.add("hidden");
@@ -94,6 +114,29 @@ radioBtns.forEach((button, i) => {
     button.addEventListener("change", hideCustomRounds);
   }
 });
+
+//# Konami Code
+const konamiCode = (event) => {
+  if (!userGuess.value) {
+    return;
+  }
+  const currentKeyPress = Date.now();
+  const keyPressTime = currentKeyPress - lastKeyPress;
+  konamiArray.push(event.key);
+  if (
+    konamiArray
+      .join(",")
+      .includes("ArrowUp,ArrowUp,ArrowDown,ArrowDown,ArrowLeft,ArrowRight,ArrowLeft,ArrowRight,b,a,Enter")
+  ) {
+    userGuess.value = CompChoice;
+    konamiArray = [];
+  } else if (konamiArray.join(",").includes("Enter") || keyPressTime > 5000) {
+    konamiArray = [];
+  }
+  lastKeyPress = Date.now();
+};
+
+document.body.addEventListener("keydown", konamiCode);
 
 customRadioBtn.addEventListener("change", showCustomRounds);
 
