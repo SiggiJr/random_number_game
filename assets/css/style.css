@@ -76,6 +76,25 @@ h6 {
   isolation: isolate;
 }
 
+section {
+  width: 50%;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.round_infos {
+  background-color: aquamarine;
+}
+
+.radio_container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: initial;
+}
+.radio_container .radio_btn {
+  padding-left: 30px;
+}
+
 .hidden {
   display: none;
 }/*# sourceMappingURL=style.css.map */

@@ -12,14 +12,22 @@
     <section class="round_infos">
       <p>in how many rounds yout think you can guess the number?</p>
       <div class="radio_container">
-        <input type="radio" name="rounds" id="rounds_4" value="4" checked />
-        <label for="rounds_4">4</label>
-        <input type="radio" name="rounds" id="rounds_5" value="5" />
-        <label for="rounds_5">5</label>
-        <input type="radio" name="rounds" id="rounds_6" value="6" />
-        <label for="rounds_6">6</label>
-        <input type="radio" name="rounds" id="rounds_custom" value="custom" />
-        <label for="rounds_custom">custom</label>
+        <div class="radio_btn">
+          <input type="radio" name="rounds" id="rounds_4" value="4" checked />
+          <label for="rounds_4">4</label>
+        </div>
+        <div class="radio_btn">
+          <input type="radio" name="rounds" id="rounds_5" value="5" />
+          <label for="rounds_5">5</label>
+        </div>
+        <div class="radio_btn">
+          <input type="radio" name="rounds" id="rounds_6" value="6" />
+          <label for="rounds_6">6</label>
+        </div>
+        <div class="radio_btn">
+          <input type="radio" name="rounds" id="rounds_custom" value="custom" />
+          <label for="rounds_custom">custom</label>
+        </div>
         <div class="custom_container">
           <input type="number" name="custom_input" id="custom_input" class="hidden" min="1" />
         </div>
@@ -35,8 +43,8 @@
     <section class="output_section">
       <output class="tip_output"></output>
     </section>
-    <div class="reset">
+    <section class="reset">
       <button class="reset_btn hidden">Reset</button>
-    </div>
+    </section>
   </body>
 </html>

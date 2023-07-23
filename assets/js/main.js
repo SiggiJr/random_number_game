@@ -30,7 +30,7 @@ const gameFunction = (event) => {
   roundsCounter++;
   changeRoundsOutput();
   if (roundsCounter === 1) {
-    CompChoice = Math.floor(Math.random() * 99 + 1);
+    CompChoice = Math.ceil(Math.random() * 100);
   }
   tipOutput(userNumber);
   const gameOver = checkGameOver(userNumber);
@@ -117,7 +117,7 @@ radioBtns.forEach((button, i) => {
 
 //# Konami Code
 const konamiCode = (event) => {
-  if (!userGuess.value) {
+  if (!userGuess.value && roundsCounter === 0) {
     return;
   }
   const currentKeyPress = Date.now();
